@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
-    <link rel="stylesheet" type="text/css" href="Home.css" />
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-    <header class="header-raber">
-        <nav class="web-topics-navigater">
+    <header class="head-raber">
+        <nav class="header-navigater">
             <h4>Web Topics</h4>
             <div class="header-buttons-container">
                 <button class="header-buttons">
@@ -24,31 +25,31 @@
             </div>
         </nav>
 
-        <div class="welcome-header">
+        <div class="sub-header-container">
 
             <div class="triangle-right"></div>
             <div class="triangle-left"></div>
 
 
             <div class="sub-header-text">
-                <p class="wellcome-text">Welcome to our website!</p>
+                <p class="sub-header-text-welcome">Welcome to our website!</p>
                 <p class="sub-header-text-paragraph">we have a new design that's fresh, modern and easy to use.</p>
             </div>
         </div>
 
         </div>
     </header>
-    <br>
-    <br>
+   
     <div class="body-container">
         <div class="search-bar-container">
             <input class="searcch-box" type="text" placeholder="Search the website.." name="search" />
-            <div class="searcch=box-button-container">
-                <button class="sort-button">sort by</button>
-                <button class="filter-button">filter by</button>
+            <div class="searcch-box-button-container">
+                <button class="sort-button">Sort by</button>
+                <button class="filter-button">Filter by</button>
             </div>
         </div>
-        <div class="container">
+        <h2>"24" Web Topics Found</h2>
+        <div class="courses-container">
 
         </div>
     </div>
@@ -57,7 +58,7 @@
 
 <!-- <footer>Developed with 2024</footer> -->
 <script defer>
-    const container = document.querySelector(".container")
+    const container = document.querySelector(".courses-container")
 
     const data =
         [
@@ -745,25 +746,30 @@
         let img = document.createElement('img');
         img.src = `./logos/${data[i].image}`
         img.className = "courses-img"
-
         courseBox.appendChild(img)
 
+       let courseBoxContent = document.createElement("div");
+       courseBoxContent.className= "courseBoxContent"
 
-        let category = document.createElement("span")
+
+        let category = document.createElement("p")
         category.innerText = `${data[i].category}`
-        courseBox.appendChild(category)
+        courseBoxContent.appendChild(category)
 
         let topic = document.createElement("h4")
         topic.innerText = `${data[i].topic}`
-        courseBox.appendChild(topic)
+        courseBoxContent.appendChild(topic)
 
+        // let rating = document.createElement("span")
+        // rating.src = ``
+        // reting.innerText
 
-
-        let courseBoxContent = document.createElement("p")
-        courseBoxContent.innerText = `${data[i].name}`
-        courseBox.appendChild(courseBoxContent)
+        let name = document.createElement("p")
+        name.innerText = `${data[i].name}`
+        courseBoxContent.appendChild(name)
 
         container.appendChild(courseBox)
+        courseBox.appendChild(courseBoxContent)
 
     }
 

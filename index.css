@@ -1,0 +1,195 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
+
+:root {
+  --brand-primary: #0768ac;
+  --brand-secondary: #03c180;
+  --bg_default: #ffffff;
+  --bg_body: #f0f9ff;
+  --lines-color: #dddddd;
+  --body-text: #333333;
+  --heart-color: #dc143c;
+  --box-shadow: rgb(0 0 0 / 0.2);
+}
+body {
+  color: var(--body-text);
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.head-raber {
+  display: flex;
+  flex-direction: column;
+}
+.header-navigater {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+.header-buttons-container {
+  display: flex;
+  align-items: center;
+}
+.header-buttons {
+  background-color: var(--bg_default);
+  border-radius: 6px;
+  border: solid var(--lines-color);
+  margin-right: 4px;
+  display: flex;
+  align-items: center;
+  height: 30px;
+}
+
+.triangle-left {
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-top: 0px solid transparent;
+  border-left: 1200px solid var(--brand-primary);
+  border-bottom: 70px solid transparent;
+}
+.triangle-right {
+  position: absolute;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-top: 0px solid transparent;
+  border-right: 1200px solid var(--brand-secondary);
+  border-bottom: 70px solid transparent;
+}
+.sub-header-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.sub-header-text-welcome {
+  margin-bottom: 0px;
+  padding-top: 28px;
+  margin-right: 280px;
+  font-size: 20px;
+  color: var(--brand-secondary);
+}
+.sub-header-text-paragraph {
+  margin-top: -2px;
+  color: #333333;
+}
+.body-container {
+  background-color: var(--bg_body);
+  padding-top: 5px;
+}
+.search-bar-container {
+  display: flex;
+  /* background-color: white; */
+  margin-bottom: 70px;
+  padding-top: 20px;
+}
+.searcch-box {
+  width: 73%;
+  height: 40px;
+  margin-left: 40px;
+  padding-left: 8px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border: 0 solid var(--bg_default);
+  box-shadow: -1px 0px 4px var(--box-shadow);
+}
+
+.sort-button {
+  background-color: var(--bg_default);
+  height: 43px;
+  width: 150px;
+  border: 0 solid var(--bg_default);
+  box-shadow: -1px 0px 5px var(--box-shadow);
+}
+.filter-button {
+  background-color: var(--bg_default);
+  height: 43px;
+  width: 150px;
+  margin-left: -4px;
+  margin-left: -4px;
+  border: 0 solid var(--bg_default);
+  box-shadow: -1px 0px 5px var(--box-shadow);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.courses-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-left: 12px;
+  margin-left: 13px;
+}
+
+.courseBox {
+  display: flex;
+  flex-wrap: wrap;
+  width: 18%;
+  padding-bottom: 7px;
+  margin: 12px;
+  background-color: var(--bg_default);
+  border-radius: 10px;
+  box-shadow: -1px 2px 4px var(--box-shadow);
+}
+.courses-img {
+  width: 100%;
+  height: 44%;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.courseBoxContent {
+  margin-left: 20px;
+}
+
+@media (max-width: 500px) {
+  .triangle-left {
+    border-left: 350px solid var(--brand-primary);
+    border-bottom: 70px solid transparent;
+  }
+
+  .search-bar-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .searcch-box {
+    width: 90%;
+    height: 50px;
+    margin-left: 0px;
+    border-radius: 0px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  .sort-button {
+    width: 174px;
+    height: 50px;
+    border-radius: 0px;
+    border-bottom-left-radius: 10px;
+  }
+  .filter-button {
+    width: 174px;
+    height: 50px;
+    border-radius: 0px;
+    border-bottom-right-radius: 10px;
+  }
+  .courses-container {
+    display: flex;
+    flex-direction: column;
+    /* padding-left: 12px; */
+    /* margin-left: 13px; */
+  }
+
+  .courseBox {
+    /* display: flex; */
+    width: 90%;
+    padding-bottom: 7px;
+    margin: 12px;
+    background-color: var(--bg_default);
+    border-radius: 10px;
+    box-shadow: -1px 2px 4px var(--box-shadow);
+  }
+  .courses-img {
+    width: 100%;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+  }
+}
