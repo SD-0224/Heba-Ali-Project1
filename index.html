@@ -5,59 +5,107 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-
     <link rel="stylesheet" type="text/css" href="index.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
     <header class="head-raber">
         <nav class="header-navigater">
-            <h4>Web Topics</h4>
+            <h4 class="web-tobics">Web Topics</h4>
             <div class="header-buttons-container">
-                <button class="header-buttons">
-                    <img src="./moon-svgrepo-com.svg">
+                <button class="header-buttons" onclick="darkThem()">
+                    <span class="mode-icon-moon"></span>
                     Dark mode
                 </button>
-                <button class="header-buttons">
-                    <img src="./heart-svgrepo-com.svg">
+                <button id="myButton" class="header-buttons" onclick="favouritButton()">
+                    <span class="mode-icon-heart"></span>
                     Favourites</button>
             </div>
         </nav>
 
         <div class="sub-header-container">
-
-            <div class="triangle-right"></div>
-            <div class="triangle-left"></div>
-
-
+            <div class="tringel-shape"></div>
+            <!-- <div class="triangle-right"></div>
+            <div class="triangle-left"></div>  -->
             <div class="sub-header-text">
                 <p class="sub-header-text-welcome">Welcome to our website!</p>
                 <p class="sub-header-text-paragraph">we have a new design that's fresh, modern and easy to use.</p>
             </div>
         </div>
-
         </div>
     </header>
-   
+
     <div class="body-container">
         <div class="search-bar-container">
-            <input class="searcch-box" type="text" placeholder="Search the website.." name="search" />
-            <div class="searcch-box-button-container">
+            <div class="searcch-input-container">
+                <span class="mode-icon-search"></span>
+                <input class="search-box" type="text" placeholder="Search the website.." name="search" />
+            </div>
+            <div class="search-box-button-container">
                 <button class="sort-button">Sort by</button>
                 <button class="filter-button">Filter by</button>
             </div>
         </div>
-        <h2>"24" Web Topics Found</h2>
+        <h2 class="body-headline">"24" Web Topics Found</h2>
         <div class="courses-container">
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <footer class="footer">
+        <p>Developed with</p>
+        <img class="footer-icon" src="./Icons/red-heart.svg" alt="red-heart-icon">
+        <p> © 2024</p>
+    </footer>
+    <div id="favourit-section" class="favourit-section-container">
+        <p class="favourit-section-paragraph">My Favourit Topics</p>
+        <div class="faviourit-courses-container">
+            <div class="faviourit-course-container">
+                <img class="faviourit-course-img" src="./logos/react.webp" alt="course-image">
+                <p class="course-name">React</p>
+                <div class="rating-star-container">
+                    <span class="rating-star"></span>
+                    <span class="rating-star"></span>
+                    <span class="rating-star"></span>
+                    <span class="rating-star"></span>
+                    <span class="rating-star-not-checked"></span>
+                </div>
+            </div>
+            <div class="faviourit-course-container">
+                <img class="faviourit-course-img" src="./logos/cloud.jpeg" alt="course-image">
+                <p class="course-name">Cloud Computing</p>
+                <div class="rating-star-container">
+                    <span class="rating-star"></span>
+                    <span class="rating-star"></span>
+                    <span class="rating-star"></span>
+                    <span class="rating-star"></span>
+                    <span class="rating-star-not-checked"></span>
 
+                </div>
+            </div>
         </div>
     </div>
 </body>
 
 
-<!-- <footer>Developed with 2024</footer> -->
 <script defer>
+
+    function darkThem() {
+        var element = document.body;
+        element.classList.toggle("dark-mode");
+        console.log("dark")
+    }
+
+    function favouritButton() {
+        var favourit = document.getElementById("favourit-section");
+        if (favourit.style.display === "none") {
+            favourit.style.display = "block";
+        } else {
+            favourit.style.display = "none";
+        }
+    }
+
     const container = document.querySelector(".courses-container")
 
     const data =
@@ -748,29 +796,51 @@
         img.className = "courses-img"
         courseBox.appendChild(img)
 
-       let courseBoxContent = document.createElement("div");
-       courseBoxContent.className= "courseBoxContent"
+        let courseBoxContent = document.createElement("div");
+        courseBoxContent.className = "course-Box-Content-container"
 
 
         let category = document.createElement("p")
+        category.className = "category-container"
         category.innerText = `${data[i].category}`
         courseBoxContent.appendChild(category)
 
         let topic = document.createElement("h4")
+        topic.className = "topic-container"
         topic.innerText = `${data[i].topic}`
         courseBoxContent.appendChild(topic)
 
-        // let rating = document.createElement("span")
-        // rating.src = ``
-        // reting.innerText
+        let ratingContainer = document.createElement("div")
+        ratingContainer.className = "rating-star-container"
+        courseBoxContent.appendChild(ratingContainer)
 
-        let name = document.createElement("p")
-        name.innerText = `${data[i].name}`
-        courseBoxContent.appendChild(name)
+        let starOne = document.createElement("span")
+        starOne.className = "rating-star"
+        ratingContainer.appendChild(starOne)
+
+        let startwo = document.createElement("span")
+        startwo.className = "rating-star"
+        ratingContainer.appendChild(startwo)
+
+        let starThree = document.createElement("span")
+        starThree.className = "rating-star"
+        ratingContainer.appendChild(starThree)
+
+        let starfour = document.createElement("span")
+        starfour.className = "rating-star"
+        ratingContainer.appendChild(starfour)
+
+        let starfive = document.createElement("span")
+        starfive.className = "rating-star-not-checked"
+        ratingContainer.appendChild(starfive)
+
+        let autherName = document.createElement("p")
+        autherName.innerText = ` Author: ${data[i].name}`
+        courseBoxContent.appendChild(autherName)
+        autherName.className = "auther-name"
 
         container.appendChild(courseBox)
         courseBox.appendChild(courseBoxContent)
-
     }
 
 </script>
