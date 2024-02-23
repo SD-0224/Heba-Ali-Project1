@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <link rel="stylesheet" type="text/css" href="details.css">
+</head>
+
+<body>
+
+
+    <header class="head-raber">
+        <nav class="header-navigater">
+            <h4 class="web-tobics container">Web Topics</h4>
+            <div class="header-buttons-container container">
+                <button class="header-buttons" onclick="darkThem()">
+                    <span class="mode-icon-moon"></span>
+                    Dark mode
+                </button>
+                <button id="myButton" class="header-buttons" onclick="favouritButton()">
+                    <span class="mode-icon-heart"></span>
+                    Favourites</button>
+            </div>
+        </nav>
+
+        <div class="sub-header-container">
+            <div class="tringel-shape"></div>
+            <div class="sub-header-text">
+                <p class="sub-header-text-welcome">Welcome to our website!</p>
+                <p class="sub-header-text-paragraph">we have a new design that's fresh, modern and easy to use.</p>
+            </div>
+        </div>
+        </div>
+    </header>
+    <main>
+        <div class="details-box">
+            <p class=  "category container-details">Web Development Languages</p>
+            <h2 class="topic container-details">HTML</h2>
+            <div class="rating container-details">
+                <span class="star"></span>
+                <span class="star"></span>
+                <span class="star"></span>
+                <span class="star"></span>
+                <span class="star-not-checked"></span>
+            </div>
+            <p class="description container-details">HTML (Hypertext Markup Language) is the standard markup language for creating web pages and other information that can be displayed in a web browser. It provides a structure for content and defines how it should be displayed on a web page, including text, images, and multimedia. HTML is essential for creating static web pages and is a foundational technology for the World Wide Web</p>
+
+        </div>
+        <section class="section">
+            <div class="subtopics-box container-details">
+                <h3 class="subtopics-head">HTML Sub Topics</h3>
+                <div class="subtopic" >HTML syntax and structure
+                    <span class="circle-checked"></span>
+                </div>
+                <div class="subtopic" >HTML elements and attributes
+                    <span class="circle-checked"></span>
+                </div>
+                <div class="subtopic" >HTML forms and input elements
+                    <span class="circle-checked"></span>
+                </div>
+                <div class="subtopic" >HTML tables and lists
+                    <span class="circle-checked"></span>
+                </div>
+                <div class="subtopic" >HTML multimedia elements (audio, video, images)
+                    <span class="circle-checked"></span>
+                </div>
+                <div class="subtopic" >HTML accessibility and semantic markup
+                    <span class="circle-checked"></span> 
+                </div>
+            </div>
+            <footer class="footer">
+                <p>Developed with</p>
+                <img class="footer-icon" src="./Icons/red-heart.svg" alt="red-heart-icon">
+                <p> © 2024</p>
+            </footer>
+        </section>
+        <aside class="aside-box">
+            <img class="details-image" src="./logos/javascript.jpg">
+            <p class="auother"> <span class="bolded">HTML</span> by <a href="https://www.youtube.com/">sarah smith</a></p>
+            <div class="aside-small-box">
+                <p class="intrested-pag"> Intrested about this topic? </p>
+                <button class="details-button">
+                    <img class="heart-icon" src="./Icons/faviourit-heart.svg">
+                    Add to Favourites
+                </button>
+                <p class="unlimited-parag aside-small-box-footer ">Unlimited Credits</p>
+            </div>
+        </aside>
+    </main>
+</body>
+<script defer>
+     function darkThem() {
+        var element = document.body;
+        element.classList.toggle("dark-mode");
+        console.log("dark")
+    }
+</script>
+
+</html>

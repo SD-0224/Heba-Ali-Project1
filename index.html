@@ -11,8 +11,8 @@
 <body>
     <header class="head-raber">
         <nav class="header-navigater">
-            <h4 class="web-tobics">Web Topics</h4>
-            <div class="header-buttons-container">
+            <h4 class="web-tobics container">Web Topics</h4>
+            <div class="header-buttons-container container">
                 <button class="header-buttons" onclick="darkThem()">
                     <span class="mode-icon-moon"></span>
                     Dark mode
@@ -23,10 +23,8 @@
             </div>
         </nav>
 
-        <div class="sub-header-container">
+        <div class="sub-header">
             <div class="tringel-shape"></div>
-            <!-- <div class="triangle-right"></div>
-            <div class="triangle-left"></div>  -->
             <div class="sub-header-text">
                 <p class="sub-header-text-welcome">Welcome to our website!</p>
                 <p class="sub-header-text-paragraph">we have a new design that's fresh, modern and easy to use.</p>
@@ -35,57 +33,72 @@
         </div>
     </header>
 
-    <div class="body-container">
-        <div class="search-bar-container">
-            <div class="searcch-input-container">
-                <span class="mode-icon-search"></span>
-                <input class="search-box" type="text" placeholder="Search the website.." name="search" />
-            </div>
-            <div class="search-box-button-container">
-                <button class="sort-button">Sort by</button>
-                <button class="filter-button">Filter by</button>
-            </div>
-        </div>
-        <h2 class="body-headline">"24" Web Topics Found</h2>
-        <div class="courses-container">
-        </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    <footer class="footer">
-        <p>Developed with</p>
-        <img class="footer-icon" src="./Icons/red-heart.svg" alt="red-heart-icon">
-        <p> © 2024</p>
-    </footer>
-    <div id="favourit-section" class="favourit-section-container">
-        <p class="favourit-section-paragraph">My Favourit Topics</p>
-        <div class="faviourit-courses-container">
-            <div class="faviourit-course-container">
-                <img class="faviourit-course-img" src="./logos/react.webp" alt="course-image">
-                <p class="course-name">React</p>
-                <div class="rating-star-container">
-                    <span class="rating-star"></span>
-                    <span class="rating-star"></span>
-                    <span class="rating-star"></span>
-                    <span class="rating-star"></span>
-                    <span class="rating-star-not-checked"></span>
+    <main>
+        <div class="body-container">
+            <div class="search-bar container">
+                <div class="searcch-input">
+                    <span class="mode-icon-search"></span>
+                    <input class="search-box" type="text" placeholder="Search the website.." name="search" />
+                </div>
+                <div class="search-box-buttons">
+                    <div class="sort-select">
+                        <label for="sort">Sort by:</label>
+                        <select name="sort" id="sort">
+                          <option value="defult">Default</option>
+                          <option value="">Defult</option>
+                          <option value="">Defult</option>
+                          <option value="">Defult</option>
+                        </select>
+                    </div>
+                    <div class="filter-select">
+                        <label for="filter">Filter by:</label>
+                        <select name="filter" id="filter">
+                          <option value="defult">Default</option>
+                          <option value="">Defult</option>
+                          <option value="">Defult</option>
+                          <option value="">Defult</option>
+                        </select>
+                    </div>
                 </div>
             </div>
-            <div class="faviourit-course-container">
-                <img class="faviourit-course-img" src="./logos/cloud.jpeg" alt="course-image">
-                <p class="course-name">Cloud Computing</p>
-                <div class="rating-star-container">
-                    <span class="rating-star"></span>
-                    <span class="rating-star"></span>
-                    <span class="rating-star"></span>
-                    <span class="rating-star"></span>
-                    <span class="rating-star-not-checked"></span>
+            <h2 class="container ">"24" Web Topics Found</h2>
+            <div class="courses-container container">
+            </div>
+        </div>
+        <footer class="footer">
+            <p>Developed with</p>
+            <img class="footer-icon" src="./Icons/red-heart.svg" alt="red-heart-icon">
+            <p> © 2024</p>
+        </footer>
+        <div id="favourit-section" class="favourit-section">
+            <p class="favourit-section-paragraph">My Favourit Topics</p>
+            <div class="faviourit-courses container">
+                <div class="faviourit-course">
+                    <img class="faviourit-course-img" src="./logos/react.webp" alt="course-image">
+                    <p class="course-title">React</p>
+                    <div class="ratings faviourit-ratings">
+                        <span class="star"></span>
+                        <span class="star"></span>
+                        <span class="star"></span>
+                        <span class="star"></span>
+                        <span class="star-not-checked"></span>
+                    </div>
+                </div>
+                <div class="faviourit-course">
+                    <img class="faviourit-course-img" src="./logos/cloud.jpeg" alt="course-image">
+                    <p class="course-title">Cloud Computing</p>
+                    <div class="ratings faviourit-ratings">
+                        <span class="star"></span>
+                        <span class="star"></span>
+                        <span class="star"></span>
+                        <span class="star"></span>
+                        <span class="star-not-checked"></span>
 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 </body>
 
 
@@ -811,27 +824,27 @@
         courseBoxContent.appendChild(topic)
 
         let ratingContainer = document.createElement("div")
-        ratingContainer.className = "rating-star-container"
+        ratingContainer.className = "ratings"
         courseBoxContent.appendChild(ratingContainer)
 
         let starOne = document.createElement("span")
-        starOne.className = "rating-star"
+        starOne.className = "star"
         ratingContainer.appendChild(starOne)
 
         let startwo = document.createElement("span")
-        startwo.className = "rating-star"
+        startwo.className = "star"
         ratingContainer.appendChild(startwo)
 
         let starThree = document.createElement("span")
-        starThree.className = "rating-star"
+        starThree.className = "star"
         ratingContainer.appendChild(starThree)
 
         let starfour = document.createElement("span")
-        starfour.className = "rating-star"
+        starfour.className = "star"
         ratingContainer.appendChild(starfour)
 
         let starfive = document.createElement("span")
-        starfive.className = "rating-star-not-checked"
+        starfive.className = "star-not-checked"
         ratingContainer.appendChild(starfive)
 
         let autherName = document.createElement("p")
