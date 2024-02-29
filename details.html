@@ -20,7 +20,7 @@
                     <span class="mode-icon-moon"></span>
                     Dark mode
                 </button>
-                <button id="myButton" class="header-buttons" onclick="favouritButton()">
+                <button id="headerButtons" class="header-buttons" onclick="favouritButton()">
                     <span class="mode-icon-heart"></span>
                     Favourites</button>
             </div>
@@ -35,68 +35,210 @@
         </div>
         </div>
     </header>
-    <main>
-        <div class="details-box">
-            <p class=  "category container-details">Web Development Languages</p>
-            <h2 class="topic container-details">HTML</h2>
-            <div class="rating container-details">
+    <main class="main">
+        <!-- <div class="details-box">
+        <div class="details-content container-details">
+
+            <p class=  "category ">Web Development Languages</p>
+            <h1 class="topic ">HTML</h1>
+            <div class="rating ">
                 <span class="star"></span>
                 <span class="star"></span>
                 <span class="star"></span>
                 <span class="star"></span>
                 <span class="star-not-checked"></span>
             </div>
-            <p class="description container-details">HTML (Hypertext Markup Language) is the standard markup language for creating web pages and other information that can be displayed in a web browser. It provides a structure for content and defines how it should be displayed on a web page, including text, images, and multimedia. HTML is essential for creating static web pages and is a foundational technology for the World Wide Web</p>
+            <p class="description ">HTML (Hypertext Markup Language) is the standard markup language for creating web pages and other information that can be displayed in a web browser. It provides a structure for content and defines how it should be displayed on a web page, including text, images, and multimedia. HTML is essential for creating static web pages and is a foundational technology for the World Wide Web</p>
+        </div>
+            
 
         </div>
+        <div class="aside-box-raber">
+            <aside class="aside-box">
+                <img class="details-image" src="./logos/javascript.jpg">
+                <p class="auother"> <span class="bolded">HTML</span> by <a href="https://www.youtube.com/">sarah smith</a></p>
+                <div class="aside-small-box">
+                    <p class="intrested-pag"> Intrested about this topic? </p>
+                    <button class="details-button">
+                        <img class="heart-icon" src="./Icons/faviourit-heart.svg">
+                        Add to Favourites
+                    </button>
+                    <p class="unlimited-parag aside-small-box-footer ">Unlimited Credits</p>
+                </div>
+            </aside>
+        </div>
+        
         <section class="section">
+            
+
             <div class="subtopics-box container-details">
-                <h3 class="subtopics-head">HTML Sub Topics</h3>
-                <div class="subtopic" >HTML syntax and structure
+                <li class="subtopics-head">HTML Sub Topics</li>
+                <li class="subtopic" >HTML syntax and structure
                     <span class="circle-checked"></span>
-                </div>
-                <div class="subtopic" >HTML elements and attributes
+                </li>
+                <li class="subtopic" >HTML elements and attributes
                     <span class="circle-checked"></span>
-                </div>
-                <div class="subtopic" >HTML forms and input elements
+                </li>
+                <li class="subtopic" >HTML forms and input elements
+                    <span class="circle-checked"></spnan>
+                </li>
+                <li class="subtopic" >HTML tables and lists
                     <span class="circle-checked"></span>
-                </div>
-                <div class="subtopic" >HTML tables and lists
+                </li>
+                <li class="subtopic" >HTML multimedia elements (audio, video, images)
                     <span class="circle-checked"></span>
-                </div>
-                <div class="subtopic" >HTML multimedia elements (audio, video, images)
-                    <span class="circle-checked"></span>
-                </div>
-                <div class="subtopic" >HTML accessibility and semantic markup
+                </li>
+                <li class="subtopic" >HTML accessibility and semantic markup
                     <span class="circle-checked"></span> 
-                </div>
+                </li>
             </div>
             <footer class="footer">
                 <p>Developed with</p>
                 <img class="footer-icon" src="./Icons/red-heart.svg" alt="red-heart-icon">
                 <p> © 2024</p>
             </footer>
-        </section>
-        <aside class="aside-box">
-            <img class="details-image" src="./logos/javascript.jpg">
-            <p class="auother"> <span class="bolded">HTML</span> by <a href="https://www.youtube.com/">sarah smith</a></p>
-            <div class="aside-small-box">
-                <p class="intrested-pag"> Intrested about this topic? </p>
-                <button class="details-button">
-                    <img class="heart-icon" src="./Icons/faviourit-heart.svg">
-                    Add to Favourites
-                </button>
-                <p class="unlimited-parag aside-small-box-footer ">Unlimited Credits</p>
-            </div>
-        </aside>
+        </section> -->
+
     </main>
 </body>
 <script defer>
-     function darkThem() {
+    function darkThem() {
         var element = document.body;
         element.classList.toggle("dark-mode");
         console.log("dark")
     }
+
+
+
+    fetch(`https://tap-web-1.herokuapp.com/topics/details/${id}`)
+        .then((response) => response.json())
+        .then(result => {
+            console.log("heba", result)
+            const main = document.querySelector(".main")
+            // for (let i = 0; i < result.length; i++) {
+
+
+            //     let detailsBox = document.createElement("div")
+            //     detailsBox.className = "details-box"
+            //     main.appendChild(detailsBox)
+
+            //     let detailsContent = document.createElement("div")
+            //     detailsContent.className = "details-content"
+            //     detailsBox.appendChild(detailsContent)
+
+            //     let category = document.createElement("p")
+            //     category.className = "category"
+            //     category.innerText = `${result[i].category}`
+            //     detailsContent.appendChild(category)
+
+            //     let topic = document.createElement("h1")
+            //     topic.className = "topic"
+            //     topic.innerText = `${result[i].topic}`
+            //     detailsContent.appendChild(topic)
+
+            //     let rating = document.createElement("div")
+            //     ratingContainer.className = "rating"
+            //     detailsContent.appendChild(rating)
+
+            //     let starOne = document.createElement("span")
+            //     starOne.className = "star"
+            //     rating.appendChild(starOne)
+
+            //     let startwo = document.createElement("span")
+            //     startwo.className = "star"
+            //     rating.appendChild(startwo)
+
+            //     let starThree = document.createElement("span")
+            //     starThree.className = "star"
+            //     rating.appendChild(starThree)
+
+            //     let starfour = document.createElement("span")
+            //     starfour.className = "star"
+            //     rating.appendChild(starfour)
+
+            //     let starfive = document.createElement("span")
+            //     starfive.className = "star-not-checked"
+            //     rating.appendChild(starfive)
+
+            //     let description = document.createElement("p")
+            //     description.className = "description "
+            //     description.innerText = `${result[i].description}`
+            //     detailsContent.appendChild(description)
+
+
+            //     let asideBoxRaber = document.createElement("div")
+            //     asideBoxRaber.className = "aside-boxraber"
+            //     main.appendChild(asideBoxRaber)
+
+            //     let asideBox = document.createElement("div")
+            //     asideBox.className = "aside-box"
+            //     asideBoxRaber.appendChild(asideBox)
+
+
+
+            //     let img = document.createElement('img');
+            //     img.src = `./logos/${result[i].image}`
+            //     img.className = "details-image"
+            //     aside-box.appendChild(img)
+
+            //     let auther = document.createElement("p")
+            //     auther.innerText = ` Author: ${result[i].name}`
+            //     auther.className = "auther"
+            //     aside-box.appendChild(auther)
+
+            //     let asideBoxTopic = document.createElement("span")
+            //     asideBoxTopic.className = "bolded"
+            //     asideBoxTopic.innerText = `${result[i].topic}`
+            //     auther.appendChild(asideBoxTopic)
+
+            //     let asideSmallBox = document.createElement("div")
+            //     asideSmallBox.className = "aside-small-box"
+            //     asideBox.appendChild(asideSmallBox)
+
+            //     let intrestedPag = document.createElement("p")
+            //     intrestedPag.className = "intrested-pag"
+            //     asideSmallBox.appendChild(intrestedPag)
+
+            //     let detailsButton = document.createElement("button")
+            //     detailsButton.className = "details-button"
+            //     asideSmallBox.appendChild(detailsButton)
+
+
+
+            //     let unlimitedParag = document.createElement("p")
+            //     unlimitedParag.className = "unlimited-parag"
+            //     asideSmallBox.appendChild(unlimitedParag)
+
+
+
+                
+            //     let section = document.createElement("section")
+            //     section.className = "section"
+            //     main.appendChild(section)
+
+            //     let subtopicsBox = document.createElement("div")
+            //     subtopicsBox.className = "subtopics-box"
+            //     section.appendChild(subtopicsBox)
+                
+            //     let subtopicsHead = document.createElement("li")
+            //     subtopicsHead.className = "subtopics-head"
+            //     subtopicsBox.appendChild(subtopicsHead)
+
+            //     let subtopic = document.createElement("li")
+            //     subtopic.className = "subtopic"
+            //     subtopic.innerText = `${result[i].subtopics}`
+            //     subtopicsBox.appendChild(subtopic)
+
+            //     let circleChecked = document.createElement("span")
+            //     circleChecked.className = "circle-checked"
+            //     subtopic.appendChild(circleChecked)
+
+
+            // }
+
+        });
+
+
 </script>
 
 </html>
