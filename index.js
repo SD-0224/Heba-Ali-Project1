@@ -1,3 +1,4 @@
+let contentData = [];
 // DARK MODE
 const toggleButton = document.getElementById("toggle-button");
 const body = document.body;
@@ -16,7 +17,7 @@ toggleButton.onclick = function () {
 
 // FAVIURIT
 function favouritButton() {
-  var favourit = document.getElementById("favourit-section");
+  let favourit = document.getElementById("favourit-section");
   if (favourit.style.display === "none") {
     favourit.style.display = "block";
   } else {
@@ -25,48 +26,98 @@ function favouritButton() {
 }
 
 //DEBOUCING FUNCTION
-const debounce = (mainFunction, delay) => {
-  // Declare a variable called 'timer' to store the timer ID
-  let timer;
+function debounce(func, delay) {
+  let timeoutId;
+  return function () {
+    const context = this;
+    const args = arguments;
 
-  // Return an anonymous function that takes in any number of arguments
-  return function (...args) {
-    // Clear the previous timer to prevent the execution of 'mainFunction'
-    clearTimeout(timer);
-
-    // Set a new timer that will execute 'mainFunction' after the specified delay
-    timer = setTimeout(() => {
-      mainFunction(...args);
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      func.apply(context, args);
     }, delay);
   };
-};
+}
+const debounceDelay = 300;
 
 //SEARCH DATA
-document.getElementById("search-input").addEventListener("input", search);
-function search() {
+// document.getElementById("search-input").addEventListener("input", searchContent);
+function searchContent() {
   let userInput = document.getElementById("search-input").value;
   fetch(`https://tap-web-1.herokuapp.com/topics/list?phrase=${userInput}`)
     .then((response) => response.json())
     .then((result) => {
       // i need to delete the courses box befor executing the user
       const courseBox = document.querySelectorAll(".courseBox");
-      for (var i = 0; i < courseBox.length; i++) {
-        console.log("i", courseBox[i]);
+      for (let i = 0; i < courseBox.length; i++) {
         courseBox[i].remove();
       }
-      console.log("res", result);
-
       document.getElementById("loading_indicator").style.display = "block";
-      const debouncedSearch = debounce(search, 3000);
-      debouncedSearch();
       addContent(result);
     });
+}
+
+const debouncedHandleSearch = debounce(searchContent, debounceDelay);
+document
+  .getElementById("search-input")
+  .addEventListener("input", debouncedHandleSearch);
+
+//sort
+document.getElementById("sort").addEventListener("onchange", sortBy);
+function sortBy() {
+  let userSortSelect = document.getElementById("sort").value;
+  //   console.log("contentData", userSortSelect);
+
+  contentData.sort(function (a, b) {
+    switch (userSortSelect) {
+      case "Topic":
+        if (a.topic < b.topic) {
+          return -1;
+        }
+        if (a.topic > b.topic) {
+          return 1;
+        }
+        break;
+      case "Author":
+        if (a.name < b.name) {
+          return -1;
+        }
+        if (a.name > b.name) {
+          return 1;
+        }
+        break;
+      default:
+        return 0;
+    }
+  });
+  const courseBox = document.querySelectorAll(".courseBox");
+  for (let i = 0; i < courseBox.length; i++) {
+    courseBox[i].remove();
+  }
+  addContent(contentData);
+}
+//filter
+document.getElementById("filter").addEventListener("onchange", filterBy);
+function filterBy() {
+  let userFillterSelect = document.getElementById("filter").value;
+
+  let filterdCategory = contentData.filter(
+    (course) => course.category === userFillterSelect
+  );
+
+  console.log("contentData", userFillterSelect, filterdCategory);
+  const courseBox = document.querySelectorAll(".courseBox");
+  for (let i = 0; i < courseBox.length; i++) {
+    courseBox[i].remove();
+  }
+  addContent(filterdCategory);
 }
 
 // CALLING THE WEBTOPICS WHEN THE USER OPEN THE HOME PAGE WHICH IS
 fetch("https://tap-web-1.herokuapp.com/topics/list")
   .then((response) => response.json())
   .then((result) => {
+    contentData = result;
     console.log(result);
     addContent(result);
   });

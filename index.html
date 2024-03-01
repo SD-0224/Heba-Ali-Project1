@@ -40,13 +40,13 @@
                 <!-- typo -->
                 <div class="searcch-input">
                     <span class="mode-icon-search"></span>
-                    <input class="search-box" type="text" id="search-input" oninput="search()"
-                        placeholder="Search the website.." name="search" />
+                    <input class="search-box" type="text" id="search-input" oninput="debouncedHandleSearch()"
+                        placeholder="Search the website.." name="search"/>
                 </div>
                 <div class="search-box-buttons">
                     <div class="sort-select">
                         <label for="sort">Sort by:</label>
-                        <select name="sort" id="sort">
+                        <select name="sort" id="sort" onchange="sortBy()">
                             <option value="defult">Default</option>
                             <option value="Topic">Topic Title</option>
                             <option value="Author">Author Name</option>
@@ -55,11 +55,15 @@
                     </div>
                     <div class="filter-select">
                         <label for="filter">Filter by:</label>
-                        <select name="filter" id="filter">
+                        <select name="filter" id="filter" onchange="filterBy()">
                             <option value="defult">Default</option>
                             <option value="Category">Category</option>
-                            <option value="">Defult</option>
-                            <option value="">Defult</option>
+                            <option value="Web Development Languages">Web Development Languages</option>
+                            <option value="Frontend Frameworks and Libraries">Frontend Frameworks and Libraries</option>
+                            <option value="Backend Frameworks and Libraries">Backend Frameworks and Libraries</option>
+                            <option value="Databases and APIs">Databases and APIs</option>
+                            <option value="Web Development Concepts and Technologies">Web Development Concepts and Technologies</option>
+
                         </select>
                     </div>
                 </div>
@@ -103,12 +107,13 @@
             </div>
         </div>
     </main>
-</body>
-<script defer
-type="module"
+    <script defer
+    type="text/javascript"
 src="./index.js">
 
 
 </script>
+</body>
+
 
 </html>
