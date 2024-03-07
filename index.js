@@ -1,29 +1,34 @@
+import { favouritButton } from "./favourit.js";
+import { createRatingStars } from "./details.js";
+import { toggleDarkMode } from "./darkmode.js";
+import { showLoadingIndicator } from "./favourit.js";
+import { hideLoadingIndicator } from "./favourit.js";
+
 let contentData = [];
-// DARK MODE
-const toggleButton = document.getElementById("toggle-button");
-const body = document.body;
-// Check for saved 'darkMode' in localStorage
-const darkMode = localStorage.getItem("darkMode");
-if (darkMode == "true") {
-  body.classList.add("dark-mode");
-} else {
-  body.classList.add("root");
-}
-toggleButton.onclick = function () {
-  body.classList.toggle("dark-mode");
-  // Save the behaviour to localStorage
-  localStorage.setItem("darkMode", body.classList.contains("dark-mode"));
-};
 
 // FAVIURIT
-function favouritButton() {
-  let favourit = document.getElementById("favourit-section");
-  if (favourit.style.display === "none") {
-    favourit.style.display = "block";
-  } else {
-    favourit.style.display = "none";
-  }
+favouritButton();
+// DARK MODE
+toggleDarkMode();
+
+// CALLING THE WEBTOPICS WHEN THE USER OPEN THE HOME PAGE
+function fetchWebTopics() {
+  fetch("https://tap-web-1.herokuapp.com/topics/list")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Something went wrong. Web topics failed to load.");
+      }
+      return response.json();
+    })
+    .then((result) => {
+      contentData = result;
+      addContent(result);
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error);
+    });
 }
+fetchWebTopics();
 
 //DEBOUCING FUNCTION
 function debounce(func, delay) {
@@ -41,36 +46,37 @@ function debounce(func, delay) {
 const debounceDelay = 300;
 
 //SEARCH DATA
-// document.getElementById("search-input").addEventListener("input", searchContent);
 function searchContent() {
   let userInput = document.getElementById("search-input").value;
   fetch(`https://tap-web-1.herokuapp.com/topics/list?phrase=${userInput}`)
     .then((response) => response.json())
     .then((result) => {
-      // i need to delete the courses box befor executing the user
+      //delete the courses box befor executing the user
       const courseBox = document.querySelectorAll(".courseBox");
       for (let i = 0; i < courseBox.length; i++) {
         courseBox[i].remove();
       }
       document.getElementById("loading_indicator").style.display = "block";
+      // showLoadingIndicator();
       addContent(result);
     });
 }
-
 const debouncedHandleSearch = debounce(searchContent, debounceDelay);
 document
   .getElementById("search-input")
   .addEventListener("input", debouncedHandleSearch);
 
 //sort
-document.getElementById("sort").addEventListener("onchange", sortBy);
+document.getElementById("sort").addEventListener("change", sortBy);
 function sortBy() {
+  // console.log("Sort function called");
+  // console.log("contentData", contentData);
   let userSortSelect = document.getElementById("sort").value;
-  //   console.log("contentData", userSortSelect);
 
   contentData.sort(function (a, b) {
     switch (userSortSelect) {
       case "Topic":
+        console.log("Sorting by topic");
         if (a.topic < b.topic) {
           return -1;
         }
@@ -96,15 +102,15 @@ function sortBy() {
   }
   addContent(contentData);
 }
+
 //filter
-document.getElementById("filter").addEventListener("onchange", filterBy);
+document.getElementById("filter").addEventListener("change", filterBy);
 function filterBy() {
   let userFillterSelect = document.getElementById("filter").value;
 
   let filterdCategory = contentData.filter(
     (course) => course.category === userFillterSelect
   );
-
   console.log("contentData", userFillterSelect, filterdCategory);
   const courseBox = document.querySelectorAll(".courseBox");
   for (let i = 0; i < courseBox.length; i++) {
@@ -113,17 +119,9 @@ function filterBy() {
   addContent(filterdCategory);
 }
 
-// CALLING THE WEBTOPICS WHEN THE USER OPEN THE HOME PAGE WHICH IS
-fetch("https://tap-web-1.herokuapp.com/topics/list")
-  .then((response) => response.json())
-  .then((result) => {
-    contentData = result;
-    console.log(result);
-    addContent(result);
-  });
-
 function addContent(result) {
   document.getElementById("loading_indicator").style.display = "none";
+  // hideLoadingIndicator();
   const container = document.querySelector(".courses-container");
   for (let i = 0; i < result.length; i++) {
     let courseBox = document.createElement("div");
@@ -143,33 +141,20 @@ function addContent(result) {
     courseBoxContent.appendChild(category);
 
     let topic = document.createElement("h4");
-    topic.className = "topic-container";
+    topic.addEventListener("click", function handleClick(event) {
+      const id = topic.className.split("-")[1];
+      console.log("sis", id);
+      window.location = `details.html?id=${id}`;
+    });
+    // topic.className = "topic-container";
+    topic.className = `topic-${result[i].id}`;
     topic.innerText = `${result[i].topic}`;
     courseBoxContent.appendChild(topic);
 
     let ratingContainer = document.createElement("div");
-    ratingContainer.className = "ratings";
+    ratingContainer.className = "rating";
     courseBoxContent.appendChild(ratingContainer);
-
-    let starOne = document.createElement("span");
-    starOne.className = "star";
-    ratingContainer.appendChild(starOne);
-
-    let startwo = document.createElement("span");
-    startwo.className = "star";
-    ratingContainer.appendChild(startwo);
-
-    let starThree = document.createElement("span");
-    starThree.className = "star";
-    ratingContainer.appendChild(starThree);
-
-    let starfour = document.createElement("span");
-    starfour.className = "star";
-    ratingContainer.appendChild(starfour);
-
-    let starfive = document.createElement("span");
-    starfive.className = "star-not-checked";
-    ratingContainer.appendChild(starfive);
+    createRatingStars(ratingContainer, 5);
 
     let autherName = document.createElement("p");
     autherName.innerText = ` Author: ${result[i].name}`;

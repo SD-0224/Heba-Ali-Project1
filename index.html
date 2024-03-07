@@ -9,21 +9,19 @@
 </head>
 
 <body>
-
     <header class="head-raber">
         <nav class="header-navigater">
             <h4 class="web-tobics container">Web Topics</h4>
             <div class="header-buttons-container container">
                 <button id="toggle-button" class="header-buttons">
-                    <span class="mode-icon-moon"></span>
-                    Dark mode
+                    <span id="mode-icon" class="mode-icon-moon">Dark mode</span>
+
                 </button>
-                <button id="headerButtons" class="header-buttons" onclick="favouritButton()">
+                <button id="headerButtons" class="header-buttons">
                     <span class="mode-icon-heart"></span>
                     Favourites</button>
             </div>
         </nav>
-
         <div class="sub-header">
             <div class="tringel-shape"></div>
             <div class="sub-header-text">
@@ -40,30 +38,28 @@
                 <!-- typo -->
                 <div class="searcch-input">
                     <span class="mode-icon-search"></span>
-                    <input class="search-box" type="text" id="search-input" oninput="debouncedHandleSearch()"
-                        placeholder="Search the website.." name="search"/>
+                    <input class="search-box" type="text" id="search-input"
+                        placeholder="Search the website.." name="search" />
                 </div>
                 <div class="search-box-buttons">
                     <div class="sort-select">
                         <label for="sort">Sort by:</label>
-                        <select name="sort" id="sort" onchange="sortBy()">
+                        <select name="sort" id="sort">
                             <option value="defult">Default</option>
                             <option value="Topic">Topic Title</option>
                             <option value="Author">Author Name</option>
-
                         </select>
                     </div>
                     <div class="filter-select">
                         <label for="filter">Filter by:</label>
-                        <select name="filter" id="filter" onchange="filterBy()">
+                        <select name="filter" id="filter">
                             <option value="defult">Default</option>
-                            <option value="Category">Category</option>
                             <option value="Web Development Languages">Web Development Languages</option>
                             <option value="Frontend Frameworks and Libraries">Frontend Frameworks and Libraries</option>
                             <option value="Backend Frameworks and Libraries">Backend Frameworks and Libraries</option>
                             <option value="Databases and APIs">Databases and APIs</option>
-                            <option value="Web Development Concepts and Technologies">Web Development Concepts and Technologies</option>
-
+                            <option value="Web Development Concepts and Technologies">Web Development Concepts and
+                                Technologies</option>
                         </select>
                     </div>
                 </div>
@@ -78,41 +74,19 @@
             <img class="footer-icon" src="./Icons/red-heart.svg" alt="red-heart-icon">
             <p> © 2024</p>
         </footer>
-        <div id="favourit-section" class="favourit-section">
+        <div id="favourit" class="favourit-section">
+            <!-- i'm adding here -->
             <p class="favourit-section-paragraph">My Favourit Topics</p>
             <div class="faviourit-courses container">
-                <div class="faviourit-course">
-                    <img class="faviourit-course-img" src="./logos/react.webp" alt="course-image">
-                    <p class="course-title">React</p>
-                    <div class="ratings faviourit-ratings">
-                        <span class="star"></span>
-                        <span class="star"></span>
-                        <span class="star"></span>
-                        <span class="star"></span>
-                        <span class="star-not-checked"></span>
-                    </div>
-                </div>
-                <div class="faviourit-course">
-                    <img class="faviourit-course-img" src="./logos/cloud.jpeg" alt="course-image">
-                    <p class="course-title">Cloud Computing</p>
-                    <div class="ratings faviourit-ratings">
-                        <span class="star"></span>
-                        <span class="star"></span>
-                        <span class="star"></span>
-                        <span class="star"></span>
-                        <span class="star-not-checked"></span>
 
-                    </div>
-                </div>
             </div>
+
+        </div>
         </div>
     </main>
-    <script defer
-    type="text/javascript"
-src="./index.js">
+    <script defer type="module" src="./index.js">
 
-
-</script>
+    </script>
 </body>
 
 
