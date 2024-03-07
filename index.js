@@ -15,7 +15,7 @@ toggleDarkMode();
 console.log("prefetch");
 fetch("https://tap-web-1.herokuapp.com/topics/list")
   .then(async (response) => {
-    console.log(await response.text());
+    // console.log(await response.text());
     return response.json();
   })
   .then((result) => {
