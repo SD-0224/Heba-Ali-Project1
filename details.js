@@ -22,6 +22,7 @@ showLoadingIndicator();
 
 let params = new URLSearchParams(document.location.search);
 let id = params.get("id");
+console.log("id", id);
 let cardData;
 
 fetch(`https://tap-web-1.herokuapp.com/topics/details/${id}`)
@@ -31,6 +32,7 @@ fetch(`https://tap-web-1.herokuapp.com/topics/details/${id}`)
     cardData = result;
 
     detailsPage(cardData);
+    console.log("id", id);
   });
 
 // async function fetchTopicDetails(id) {

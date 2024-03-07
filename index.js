@@ -12,23 +12,32 @@ favouritButton();
 toggleDarkMode();
 
 // CALLING THE WEBTOPICS WHEN THE USER OPEN THE HOME PAGE
-function fetchWebTopics() {
-  fetch("https://tap-web-1.herokuapp.com/topics/list")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Something went wrong. Web topics failed to load.");
-      }
-      return response.json();
-    })
-    .then((result) => {
-      contentData = result;
-      addContent(result);
-    })
-    .catch((error) => {
-      console.error("Error fetching data:", error);
-    });
-}
-fetchWebTopics();
+
+fetch("https://tap-web-1.herokuapp.com/topics/list")
+  .then((response) => response.json())
+  .then((result) => {
+    contentData = result;
+    // console.log(result);
+    addContent(result);
+  });
+
+// function fetchWebTopics() {
+//   fetch("https://tap-web-1.herokuapp.com/topics/list")
+//     .then((response) => {
+//       if (!response.ok) {
+//         throw new Error("Something went wrong. Web topics failed to load.");
+//       }
+//       return response.json();
+//     })
+//     .then((result) => {
+//       contentData = result;
+//       addContent(result);
+//     })
+//     .catch((error) => {
+//       console.error("Error fetching data:", error);
+//     });
+// }
+// fetchWebTopics();
 
 //DEBOUCING FUNCTION
 function debounce(func, delay) {
