@@ -14,7 +14,10 @@ toggleDarkMode();
 // CALLING THE WEBTOPICS WHEN THE USER OPEN THE HOME PAGE
 console.log("prefetch");
 fetch("https://tap-web-1.herokuapp.com/topics/list")
-  .then((response) => response.json())
+  .then(async (response) => {
+    console.log(await response.text());
+    return response.json();
+  })
   .then((result) => {
     console.log("infetch");
     contentData = result;

@@ -24,16 +24,17 @@ let params = new URLSearchParams(document.location.search);
 let id = params.get("id");
 console.log("id", id);
 let cardData;
+if (id !== null) {
+  fetch(`https://tap-web-1.herokuapp.com/topics/details/${id}`)
+    .then((response) => response.json())
+    .then((result) => {
+      //let cardData = result
+      cardData = result;
 
-fetch(`https://tap-web-1.herokuapp.com/topics/details/${id}`)
-  .then((response) => response.json())
-  .then((result) => {
-    //let cardData = result
-    cardData = result;
-
-    detailsPage(cardData);
-    console.log("id", id);
-  });
+      detailsPage(cardData);
+      console.log("id", id);
+    });
+}
 
 // async function fetchTopicDetails(id) {
 //   try {

@@ -4,7 +4,7 @@ document
   .getElementById("headerButtons")
   .addEventListener("click", favouritButton);
 export function favouritButton() {
-  let allFaveCards = JSON.parse(localStorage.getItem("MyFaviorit"));
+  const allFaveCards = JSON.parse(localStorage.getItem("MyFaviorit")) || [];
   let faviouritCourses = document.querySelector(".faviourit-courses");
   let faviourtCourse = document.querySelectorAll(".faviourit-course");
 
