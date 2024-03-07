@@ -39,8 +39,6 @@ export function favouritButton() {
       let faviouritRatings = document.createElement("div");
       faviouritRatings.className = "rating";
       faviouritCourse.appendChild(faviouritRatings);
-      console.log("rating", faviouritRatings);
-
       createRatingStars(faviouritRatings, 5);
     }
   } else {

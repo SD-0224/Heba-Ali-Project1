@@ -24,42 +24,42 @@ let params = new URLSearchParams(document.location.search);
 let id = params.get("id");
 let cardData;
 
-// fetch(`https://tap-web-1.herokuapp.com/topics/details/${id}`)
-//   .then((response) => response.json())
-//   .then((result) => {
-//     //let cardData = result
-//     cardData = result;
+fetch(`https://tap-web-1.herokuapp.com/topics/details/${id}`)
+  .then((response) => response.json())
+  .then((result) => {
+    //let cardData = result
+    cardData = result;
 
-//     detailsPage(cardData);
-//   });
-
-async function fetchTopicDetails(id) {
-  try {
-    const response = await fetch(
-      `https://tap-web-1.herokuapp.com/topics/details/${id}`
-    );
-    if (!response.ok) {
-      throw new Error(
-        "Something went wrong. Web topic details failed to load."
-      );
-    }
-    const res = await response.json();
-    return res;
-  } catch (error) {
-    console.error("Error fetching topic details:", error);
-    return null;
-  }
-}
-
-// Call the fetchTopicDetails function to fetch topic details
-fetchTopicDetails(id).then((cardData) => {
-  if (cardData) {
-    console.log(cardData);
-    // You can call any function that depends on topicDetails, such as detailsPage
     detailsPage(cardData);
-  } else {
-  }
-});
+  });
+
+// async function fetchTopicDetails(id) {
+//   try {
+//     const response = await fetch(
+//       `https://tap-web-1.herokuapp.com/topics/details/${id}`
+//     );
+//     if (!response.ok) {
+//       throw new Error(
+//         "Something went wrong. Web topic details failed to load."
+//       );
+//     }
+//     const res = await response.json();
+//     return res;
+//   } catch (error) {
+//     console.error("Error fetching topic details:", error);
+//     return null;
+//   }
+// }
+
+// // Call the fetchTopicDetails function to fetch topic details
+// fetchTopicDetails(id).then((cardData) => {
+//   if (cardData) {
+//     console.log(cardData);
+//     // You can call any function that depends on topicDetails, such as detailsPage
+//     detailsPage(cardData);
+//   } else {
+//   }
+// });
 
 // function fetchTopicDetails(id) {
 //   let params = new URLSearchParams(document.location.search);
