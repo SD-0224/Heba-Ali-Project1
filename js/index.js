@@ -1,8 +1,10 @@
-import { favouritButton } from "./favourit.js";
+import {
+  favouritButton,
+  showLoadingIndicator,
+  hideLoadingIndicator,
+} from "./favourit.js";
 import { createRatingStars } from "./details.js";
 import { toggleDarkMode } from "./darkmode.js";
-import { showLoadingIndicator } from "./favourit.js";
-import { hideLoadingIndicator } from "./favourit.js";
 
 let contentData = [];
 
@@ -10,37 +12,27 @@ let contentData = [];
 favouritButton();
 // DARK MODE
 toggleDarkMode();
+showLoadingIndicator();
 
 // CALLING THE WEBTOPICS WHEN THE USER OPEN THE HOME PAGE
-console.log("prefetch");
-fetch("https://tap-web-1.herokuapp.com/topics/list")
-  .then((response) => {
-    return response.json();
-  })
-  .then((result) => {
-    console.log("infetch");
-    contentData = result;
-    // console.log(result);
-    addContent(result);
-  });
-
-// function fetchWebTopics() {
-//   fetch("https://tap-web-1.herokuapp.com/topics/list")
-//     .then((response) => {
-//       if (!response.ok) {
-//         throw new Error("Something went wrong. Web topics failed to load.");
-//       }
-//       return response.json();
-//     })
-//     .then((result) => {
-//       contentData = result;
-//       addContent(result);
-//     })
-//     .catch((error) => {
-//       console.error("Error fetching data:", error);
-//     });
-// }
-// fetchWebTopics();
+function fetchWebTopics() {
+  fetch("https://tap-web-1.herokuapp.com/topics/list")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Something went wrong. Web topics failed to load.");
+      }
+      return response.json();
+    })
+    .then((result) => {
+      console.log("infetch");
+      contentData = result;
+      addContent(result);
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error);
+    });
+}
+fetchWebTopics();
 
 //DEBOUCING FUNCTION
 function debounce(func, delay) {
@@ -68,8 +60,8 @@ function searchContent() {
       for (let i = 0; i < courseBox.length; i++) {
         courseBox[i].remove();
       }
-      document.getElementById("loading_indicator").style.display = "block";
-      // showLoadingIndicator();
+      // document.getElementById("loading_indicator").style.display = "block";
+      showLoadingIndicator();
       addContent(result);
     });
 }
@@ -81,8 +73,6 @@ document
 //sort
 document.getElementById("sort").addEventListener("change", sortBy);
 function sortBy() {
-  // console.log("Sort function called");
-  // console.log("contentData", contentData);
   let userSortSelect = document.getElementById("sort").value;
 
   contentData.sort(function (a, b) {
@@ -115,7 +105,7 @@ function sortBy() {
   addContent(contentData);
 }
 
-//filter
+//Filter
 document.getElementById("filter").addEventListener("change", filterBy);
 function filterBy() {
   let userFillterSelect = document.getElementById("filter").value;
@@ -132,8 +122,8 @@ function filterBy() {
 }
 
 function addContent(result) {
-  document.getElementById("loading_indicator").style.display = "none";
-  // hideLoadingIndicator();
+  // document.getElementById("loading_indicator").style.display = "none";
+  hideLoadingIndicator();
   const container = document.querySelector(".courses-container");
   for (let i = 0; i < result.length; i++) {
     let courseBox = document.createElement("div");

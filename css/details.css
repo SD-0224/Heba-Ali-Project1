@@ -14,9 +14,9 @@
   --heart-color: #dc143c;
   --text-bg-white: black;
   --box-shadow: rgb(0 0 0 / 0.2);
-  --bg-image: url("./Icons/moon-defult.svg");
-  --bg-image-heart: url("./Icons/heart-defult.svg");
-  --bg-image-search: url("./Icons/search-defult.svg");
+  --bg-image: url("../Icons/moon-defult.svg");
+  --bg-image-heart: url("../Icons/heart-defult.svg");
+  --bg-image-search: url("../Icons/search-defult.svg");
 }
 
 .dark-mode {
@@ -28,9 +28,9 @@
   --lines-color: #000000;
   --body-text: #ededed;
   --heart-color: #dc143c;
-  --bg-image: url("./Icons/white-moon.svg");
-  --bg-image-heart: url("./Icons/white-heart.svg");
-  --bg-image-search: url("./Icons/search-dark.svg");
+  --bg-image: url("../Icons/white-moon.svg");
+  --bg-image-heart: url("../Icons/white-heart.svg");
+  --bg-image-search: url("../Icons/search-dark.svg");
 }
 
 #loading_indicator {
@@ -119,7 +119,7 @@
   margin-block: 15px;
 }
 .circle-checked {
-  background-image: url(./Icons/circle-checked.svg);
+  background-image: url(../Icons/circle-checked.svg);
   display: block;
   width: 19px;
   height: 17px;

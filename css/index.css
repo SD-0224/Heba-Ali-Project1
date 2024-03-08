@@ -9,9 +9,9 @@
   --body-text: #333333;
   --heart-color: #dc143c;
   --box-shadow: #00000033;
-  --bg-image: url("./Icons/moon-defult.svg");
-  --bg-image-heart: url("./Icons/heart-defult.svg");
-  --bg-image-search: url("./Icons/search-defult.svg");
+  --bg-image: url("../Icons/moon-defult.svg");
+  --bg-image-heart: url("../Icons/heart-defult.svg");
+  --bg-image-search: url("../Icons/search-defult.svg");
 }
 
 .dark-mode {
@@ -24,9 +24,9 @@
   --lines-color: #000000;
   --body-text: #ededed;
   --heart-color: #dc143c;
-  --bg-image: url("./Icons/white-moon.svg");
-  --bg-image-heart: url("./Icons/white-heart.svg");
-  --bg-image-search: url("./Icons/search-dark.svg");
+  --bg-image: url("../Icons/white-moon.svg");
+  --bg-image-heart: url("../Icons/white-heart.svg");
+  --bg-image-search: url("../Icons/search-dark.svg");
 }
 #loading_indicator {
   /* position: relative; */
@@ -89,7 +89,7 @@ body {
 }
 
 .star {
-  background-image: url(./Icons/star-filled.svg);
+  background-image: url(../Icons/star-filled.svg);
   display: block;
   width: 17px;
   height: 17px;
@@ -99,7 +99,7 @@ body {
 }
 
 .star-not-checked {
-  background-image: url(./Icons/star-notfill.svg);
+  background-image: url(../Icons/star-notfill.svg);
   display: block;
   width: 17px;
   height: 17px;

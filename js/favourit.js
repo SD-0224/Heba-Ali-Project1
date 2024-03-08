@@ -4,7 +4,7 @@ document
   .getElementById("headerButtons")
   .addEventListener("click", favouritButton);
 export function favouritButton() {
-  const allFaveCards = JSON.parse(localStorage.getItem("MyFaviorit")) || [];
+  const allFaveCards = JSON.parse(localStorage.getItem("MyFavourite")) || [];
   let faviouritCourses = document.querySelector(".faviourit-courses");
   let faviourtCourse = document.querySelectorAll(".faviourit-course");
 
@@ -44,6 +44,16 @@ export function favouritButton() {
   } else {
     favourit.style.display = "none";
   }
+}
+
+export function removeCard(faveCard, id) {
+  const elmWithIdIndex = faveCard.findIndex((elm) => elm.id === id);
+
+  if (elmWithIdIndex > -1) {
+    faveCard.splice(elmWithIdIndex, 1);
+  }
+
+  return faveCard;
 }
 
 export function showLoadingIndicator() {
